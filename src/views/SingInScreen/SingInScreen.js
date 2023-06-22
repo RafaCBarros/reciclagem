@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, useWindowDimensions, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 // import Logo from '../../../assets/images/Logo.js';
 import CustomInput from '../../components/CustomInput/CustomInput.js';
 import CustomButton from '../../components/CustomButton/CustomButton.js';
@@ -8,13 +9,9 @@ import {useNavigation} from '@react-navigation/native';
 const SingInScrene = () => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-
-  const {height} = useWindowDimensions();
-
   const navigation = useNavigation();
 
   const onSingInPress = () => {
-    console.warn('Logar');
     //validar usuario
     setUsuario('');
     setSenha('');
@@ -22,13 +19,12 @@ const SingInScrene = () => {
   };
 
   const onForgotPassPress = () => {
-    console.warn('Senha Esquecida');
-
     navigation.navigate('ForgotPassword');
   };
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.tela}>
       <View style={styles.root}>
+        <Icon name="recycle" size={100} color="#fff" />
         <CustomInput
           placeholder={'usuario'}
           value={usuario}

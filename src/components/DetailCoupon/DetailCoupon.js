@@ -1,14 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const DetailCoupon = ({}) => {
+const DetailCoupon = ({dados}) => {
+  const cupom = dados;
   return (
     <View style={styles.cartao}>
-      <Text style={styles.legenda}>Nome Produto</Text>
-      <View style={styles.imagem} />
-      <Text style={styles.legenda}>Descrição do Produto | Tipo</Text>
-      <Text style={styles.legenda}>Descarte adequado</Text>
-      <Text style={styles.legenda}>Locais adequados de descarte</Text>
+      <Text style={styles.empresa}>{cupom.empresa}</Text>
+      <View style={styles.cupom}>
+        <Text style={styles.codigo}>{cupom.codigo}</Text>
+        <Text style={styles.descricao}>{cupom.descricao}</Text>
+      </View>
     </View>
   );
 };
@@ -25,8 +26,28 @@ const styles = StyleSheet.create({
 
     alignItems: 'flex-start',
   },
-  legenda: {
-    fontSize: 16,
+  cupom: {
+    backgroundColor: 'darkgreen',
+    maxHeight: 60,
+    height: 'auto',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    width: '100%',
+  },
+  empresa: {
+    fontSize: 28,
+  },
+  codigo: {
+    textAlign: 'center',
+    fontSize: 26,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  descricao: {
+    fontSize: 14,
+    textAlign: 'center',
+    color: 'white',
+    marginBottom: 10,
   },
   imagem: {
     alignSelf: 'center',

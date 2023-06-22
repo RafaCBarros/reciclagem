@@ -42,7 +42,7 @@ const HomeScreen = () => {
             eventoPressionar={aoNovoDispositivoApertado}
           />
 
-          <CustomButton texto="Perfil" eventoPressionar={aoPressionarPerfil} />
+          <CustomButton texto="Cupons" eventoPressionar={aoPressionarPerfil} />
           <CustomButton
             texto="Sobre Reciclagem"
             eventoPressionar={aoPressionarInformacao}
