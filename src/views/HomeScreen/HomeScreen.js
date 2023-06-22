@@ -22,10 +22,6 @@ const HomeScreen = () => {
     navigation.navigate('Information');
   };
 
-  const aoNovoDispositivoApertado = () => {
-    console.log('ah');
-  };
-
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.tela}>
       <View style={styles.root}>
@@ -37,12 +33,12 @@ const HomeScreen = () => {
             eventoPressionar={aoPressionarMapa}
           />
 
-          <CustomButton
-            texto="Camera"
-            eventoPressionar={aoNovoDispositivoApertado}
-          />
+          <CustomButton texto="Camera" />
 
-          <CustomButton texto="Cupons" eventoPressionar={aoPressionarPerfil} />
+          <CustomButton
+            texto="Cupons e Lembretes"
+            eventoPressionar={aoPressionarPerfil}
+          />
           <CustomButton
             texto="Sobre Reciclagem"
             eventoPressionar={aoPressionarInformacao}

@@ -9,14 +9,10 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSingInPress = () => {
-    console.warn('Login');
-
     navigation.navigate('SingIn');
   };
 
   const onResetPassPress = () => {
-    console.warn('Resetar Senha');
-
     navigation.navigate('SingIn');
   };
 

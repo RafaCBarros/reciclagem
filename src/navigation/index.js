@@ -21,7 +21,7 @@ const Navigation = () => {
       <Stack.Navigator
         screenOptions={{
           title: 'Recicla GO',
-          headerStyle: {height: 40},
+          headerShown: false,
         }}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="SingIn" component={SingInScrene} />
