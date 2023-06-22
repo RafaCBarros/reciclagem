@@ -22,6 +22,10 @@ const HomeScreen = () => {
     navigation.navigate('Information');
   };
 
+  const aoPressionarCam = () => {
+    navigation.navigate('Scanner');
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.tela}>
       <View style={styles.root}>
@@ -33,7 +37,7 @@ const HomeScreen = () => {
             eventoPressionar={aoPressionarMapa}
           />
 
-          <CustomButton texto="Camera" />
+          <CustomButton texto="Camera" eventoPressionar={aoPressionarCam} />
 
           <CustomButton
             texto="Cupons e Lembretes"

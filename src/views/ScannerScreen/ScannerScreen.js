@@ -1,33 +1,32 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Button, Image, View, Platform} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-// Componente de exibir dados
-import ItemCard from '../../components/ItemCard/ItemCard';
+export default function ImagePickerExample() {
+  const [image, setImage] = useState(null);
 
-// import {useNavigation} from '@react-navigation/native';
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
-// API para puxar informações
+    console.log(result);
 
-const ScannerScreen = () => {
-  //  const navigation = useNavigation();
-
-  // funcao para ao fotografar abrir outra area com informações
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   return (
-    <View style={styles.cam}>
-      <Text>Camera</Text>
-      <ItemCard style={styles.detalhe} />
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Button title="Escolha uma imagem da galeria" onPress={pickImage} />
+      {image && (
+        <Image source={{uri: image}} style={{width: 200, height: 200}} />
+      )}
     </View>
   );
-};
-
-const styles = StyleSheet.create({
-  cam: {
-    flex: 1,
-  },
-  detalhe: {
-    display: 'none',
-  },
-});
-
-export default ScannerScreen;
+}

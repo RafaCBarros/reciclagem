@@ -12,6 +12,7 @@ import MapScreen from '../views/MapScreen/MapScreen.js';
 import ProfileScreen from '../views/ProfileScreen/ProfileScreen.js';
 import InformationScreen from '../views/InformationScreen/InformationScreen.js';
 import LocationScreen from '../views/LocationScreen/LocationScreen.js';
+import ScannerScreen from '../views/ScannerScreen/ScannerScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,7 @@ const Navigation = () => {
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Information" component={InformationScreen} />
         <Stack.Screen name="Location" component={LocationScreen} />
+        <Stack.Screen name="Scanner" component={ScannerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
