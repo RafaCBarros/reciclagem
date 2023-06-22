@@ -15,9 +15,11 @@ const ProfileScreen = () => {
   const [hora, setHora] = useState('');
 
   const aoPressionarLembrete = () => {
-    console.warn(`Lembrete: ${descricao} salvo para ${hora}`);
+    if (descricao && hora) {
+      console.warn(`Lembrete: ${descricao} salvo para ${hora}`);
+      // enviar para banco para que o usuário possua essas informações
+    }
 
-    // enviar para banco para que o usuário possua essas informações
     setDescricao('');
     setHora('');
   };

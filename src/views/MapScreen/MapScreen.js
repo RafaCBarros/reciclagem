@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import * as Location from 'expo-location';
 
-const MapScreen = ({navigation}) => {
+const {width, height} = Dimensions.get('screen');
+
+export default function Map({navigation}) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -11,7 +13,7 @@ const MapScreen = ({navigation}) => {
     (async () => {
       let {status} = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
-        setErrorMsg('Permissão para acessar geolocalização foi negada');
+        setErrorMsg('Permission to access location was denied');
         return;
       }
 
@@ -20,7 +22,7 @@ const MapScreen = ({navigation}) => {
     })();
   }, []);
 
-  let text = 'Esperando..';
+  let text = 'Waiting..';
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
@@ -36,7 +38,7 @@ const MapScreen = ({navigation}) => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        style={{width: '100%', height: '100%'}}
+        style={{width: width, height: height}}
         region={location}
         minZoomLevel={17}
         showsUserLocation={true}>
@@ -45,11 +47,11 @@ const MapScreen = ({navigation}) => {
             latitude: -1.459026,
             longitude: -48.489099,
           }}
-          pinColor="red"
+          pinColor="green"
           onPress={() =>
             navigation.navigate('MarkerPage', {
-              tipoReciclagem: 'metal',
-              horario: 'Segunda a Sexta: 8h às 18h',
+              idItem: 'organicos',
+              horario: 'Das 8:00 até as 18:00',
             })
           }
         />
@@ -58,11 +60,11 @@ const MapScreen = ({navigation}) => {
             latitude: -1.457739,
             longitude: -48.4897,
           }}
-          pinColor="blue"
+          pinColor="green"
           onPress={() =>
             navigation.navigate('MarkerPage', {
-              tipoReciclagem: 'papel',
-              horario: 'Terça a Sexta: 8h às 19h | Sábado: 9h às 13h',
+              idItem: 'plasticos',
+              horario: 'Das 8:00 até as 18:00',
             })
           }
         />
@@ -71,19 +73,18 @@ const MapScreen = ({navigation}) => {
             latitude: -1.461857,
             longitude: -48.491116,
           }}
-          pinColor="white"
+          pinColor="green"
           onPress={() =>
             navigation.navigate('MarkerPage', {
-              tipoReciclagem: 'metal e papel',
-              horario:
-                'Segunda a Sexta: 8h às 19h30 | Sábado e Domingo: 10h às 16h',
+              idItem: 'metais',
+              horario: 'Das 8:00 até as 18:00',
             })
           }
         />
       </MapView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -91,5 +92,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-export default MapScreen;
